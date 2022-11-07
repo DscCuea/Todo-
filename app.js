@@ -1,38 +1,40 @@
+// Get items from the html document
+
+
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 const fireIcon=document.querySelector('.fa-fire');
 
-const colors= ['#003663','#090b16','linear-gradient(120deg,#1f4037,#99f2c8)','linear-gradient(120deg,#FF0099,#493240)'];
+const colors= ['#003663','#090b16','linear-gradient(120deg,#1f4037,#99f2c8)','linear-gradient(120deg,#FF0099,#493240)']; //adding multiple background colors
 
 //EVENT LISTNERS//
+// create a click event to the buttons 
 todoButton.addEventListener('click',addTodo);
 
 todoList.addEventListener('click',deleteCheck);
 
 fireIcon.addEventListener('click',changeColor)
 //FUNCTIONS//
-
+// Add tasks implementation
 function addTodo(e){
-    e.preventDefault()
+    e.preventDefault() // prevents page from refreshing after submitting
     
-    // TODO//
-
-    const todoDiv= document.createElement('div');
-    todoDiv.classList.add('todo');
+    const todoDiv= document.createElement('div'); //create a div tag
+    todoDiv.classList.add('todo'); //add a class todo to the div class
 
     //LI//
 
-    const newTodo=document.createElement('li');
+    const newTodo=document.createElement('li'); //create a list tag
 
-    newTodo.innerHTML=todoInput.value;
+    newTodo.innerHTML=todoInput.value; //set value of list to user input value
 
-    newTodo.classList.add('todo-item');
+    newTodo.classList.add('todo-item'); 
     
-    todoDiv.appendChild(newTodo);
+    todoDiv.appendChild(newTodo); //add list data to todDiv
 
     // BUTTONS//
-
+// Completed tasks implementation
     const completeBtn = document.createElement('button');
 
     completeBtn.innerHTML='<i class="fas fa-check"></i>';
@@ -55,7 +57,7 @@ function addTodo(e){
     todoList.appendChild(todoDiv);
     console.log(todoList);
 
-    todoInput.value='';
+    todoInput.value=''; //set value of the input to empty after adding todo
 
 
     
@@ -83,7 +85,7 @@ function deleteCheck(e){
         itemParent.classList.toggle('completed');
     }
 }
-
+// background colors implementation
 var i=0;
 function changeColor(e){
 i=i<colors.length-1?++i:0;
